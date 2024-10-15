@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 require("dotenv").config({ path: `${__dirname}/Configs/.env` });
-const PORT = process.env.PORT;
+const {PORT} = require("./config.js");
 
 
 app.use('/', express.static(`${__dirname}/front/SubPages/`));

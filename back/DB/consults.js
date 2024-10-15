@@ -1,11 +1,13 @@
 const mysql = require("mysql");
 const services = require(`${__dirname}/../Auth/authservices.js`);
+const {DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT} = require("../../config.js");
 
 let connection = mysql.createConnection({
-  host: "localhost",
-  database: "my_database",
-  user: "yasiel",
-  password: "yasiel1234",
+  host: DB_HOST,
+  database: DB_NAME,
+  user: DB_USER,
+  password: DB_PASSWORD,
+  port: DB_PORT,
 })
 
 connection.connect(function (err) {
