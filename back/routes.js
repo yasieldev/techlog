@@ -24,9 +24,9 @@ router.post("/register", (req, res) => {
   services.hashPassword(req.body.password).then((hashedPassword)=>{
     
     db.createUser(req.body.username, req.body.gmail, hashedPassword).then((result) => {
-      res.cookie("infouser", { "message": result }).redirect("http://localhost:5000/auth/");
+      res.cookie("infouser", { "message": result }).redirect("https://techlog-production.up.railway.app/auth/");
     }).catch((e) => {
-      res.cookie("infouser", { "message": e }).redirect("http://localhost:5000/auth/");
+      res.cookie("infouser", { "message": e }).redirect("https://techlog-production.up.railway.app/auth/");
     });
   
   });
@@ -47,7 +47,7 @@ router.get("/auth", (req, res) => {
 <script>
   
 alert("${req.cookies.infouser.message}");
-window.location.href = "http://localhost:5000/";
+window.location.href = "https://techlog-production.up.railway.app/";
 </script>
 
 <body>
@@ -73,7 +73,7 @@ router.post("/uregistred",(req, res)=>{
 <script>
   
 alert("${response}");
-window.location.href = "http://localhost:5000/";
+window.location.href = "https://techlog-production.up.railway.app/";
 </script>
 
 <body>
@@ -94,7 +94,7 @@ window.location.href = "http://localhost:5000/";
 <script>
   
 alert("${e}");
-window.location.href = "http://localhost:5000/login";
+window.location.href = "https://techlog-production.up.railway.app/login";
 </script>
 
 <body>
