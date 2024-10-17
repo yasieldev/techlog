@@ -7,10 +7,7 @@ let connection = mysql.createConnection({
   database: DB_NAME,
   user: DB_USER,
   password: DB_PASSWORD,
-  port: DB_PORT,
-  authPlugins: {
-    caching_sha2_password: () => mysql.authPlugins.caching_sha2_password
-  }
+  port: DB_PORT
 });
 
 connection.connect(function (err) {
