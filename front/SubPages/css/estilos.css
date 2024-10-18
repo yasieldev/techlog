@@ -368,6 +368,11 @@ body {
 /* Media queries */
 
 @media (max-width:800px) {
+
+  .nav__img{
+    filter:invert(100%);
+  }
+
   .nav__menu {
     display: block;
   }
@@ -417,7 +422,7 @@ body {
   }
 
 
-  .knowledge__container {
+  .knowledge__container__about {
     grid-template-columns: 1fr;
     grid-template-rows: max-content 1fr;
     gap: 3em;

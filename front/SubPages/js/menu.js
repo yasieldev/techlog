@@ -1,6 +1,6 @@
 (function(){
     const openButton = document.querySelector('.nav__menu');
-    const menu = document.querySelector('.nav__link');
+    const menu = document.querySelector('.nav__link') || document.querySelector('.nav__link__about');
     const closeMenu = document.querySelector('.nav__close');
 
     openButton.addEventListener('click', ()=>{

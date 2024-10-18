@@ -5,6 +5,12 @@
   --color-title: #001A49;
 }
 
+ html{
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
+  }
+
 
 body::-webkit-scrollbar {
   background-color: #28272c;
@@ -24,7 +30,7 @@ body::-webkit-scrollbar-button {
 }
 
 body {
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 body {
@@ -145,6 +151,7 @@ body {
 .nav__img {
   display: block;
   width: 30px;
+  color:black;
 }
 
 
@@ -367,6 +374,24 @@ body {
 /* Media queries */
 
 @media (max-width:800px) {
+
+  
+  .nav__title{
+    font-size:23px;
+  }
+
+  .icon {
+    width: 33px;
+    height: 33px;
+  }
+
+  .group_image{
+    margin-top:60px;
+  }
+  .nav__img{
+    filter:invert(100%);
+  }
+
   .nav__menu {
     display: block;
   }
@@ -424,6 +449,7 @@ body {
   }
 
   .knowledge__picture {
+    top: 200px;
     grid-row: 1/2;
     justify-self: center;
   }
@@ -477,6 +503,14 @@ body {
 }
 
 @media (max-width:600px) {
+
+  html{
+    margin:0;
+    padding:0;
+    overflow-x:hidden; 
+  }
+
+
   .hero__title {
     font-size: 2rem;
   }
