@@ -369,6 +369,19 @@ body {
 
 @media (max-width:800px) {
 
+  .nav__links{
+    color:#fff;
+  }
+
+  .nav__title{
+    font-size:23px;
+  }
+
+  .icon {
+    width: 33px;
+    height: 33px;
+  }
+
   .nav__img{
     filter:invert(100%);
   }
