@@ -9,7 +9,7 @@ app.use(session({
   secret: 'techlogsecret',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false }
+  cookie: { secure: true }
 }));
 
 

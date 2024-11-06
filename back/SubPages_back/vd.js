@@ -6,7 +6,7 @@ function verifyUser(req, res, next) {
   if (req.session && req.session.user) {
     next(); // Si el usuario está autenticado, continúa a la ruta
   } else {
-    res.redirect("http://localhost:5000/login"); // Redirige al login si no está autenticado
+    res.redirect("https://techlog-production.up.railway.app/login"); // Redirige al login si no está autenticado
   }
 }
 
