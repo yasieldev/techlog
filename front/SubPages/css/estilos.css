@@ -442,6 +442,11 @@ body {
     text-align: center;
   }
 
+  .knowledge__paragraph__about{
+  padding:9px;
+  background:#ccccccbb;
+  }
+
   .knowledge__picture {
     grid-row: 1/2;
     justify-self: center;

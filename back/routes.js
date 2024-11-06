@@ -59,53 +59,45 @@ window.location.href = "https://techlog-production.up.railway.app/";
 })
 
 
-router.post("/uregistred",(req, res)=>{
-  let {username, password} = req.body;
-  db.login(username, password).then(response => res.send(
-    `
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>InfoUser</title>
-</head>
-<script>
-  
-alert("${response}");
-window.location.href = "https://techlog-production.up.railway.app/";
-</script>
+router.post("/uregistred", (req, res) => {
+  let { username, password } = req.body;
 
-<body>
-
-</body>
-
-</html>
-`))
-.catch(e=>res.send(
-  `
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>InfoUser</title>
-</head>
-<script>
-  
-alert("${e}");
-window.location.href = "https://techlog-production.up.railway.app/login";
-</script>
-
-<body>
-
-</body>
-
-</html>
-`
-));
-})
-
+  db.login(username, password).then((response) => {
+    // Si las credenciales son válidas, guarda el usuario en la sesión
+    req.session.user = { username: username };
+    res.send(`
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>InfoUser</title>
+      </head>
+      <script>
+        alert("${response}");
+        window.location.href = "https://techlog-production.up.railway.app/content";
+      </script>
+      <body></body>
+      </html>
+    `);
+  }).catch(e => {
+    res.send(`
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>InfoUser</title>
+      </head>
+      <script>
+        alert("${e}");
+        window.location.href = "https://techlog-production.up.railway.app/login";
+      </script>
+      <body></body>
+      </html>
+    `);
+  });
+});
 
 
 
