@@ -12,6 +12,8 @@ app.use(session({
   cookie: { secure: true }
 }));
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/', express.static(`${__dirname}/front/SubPages/`));
 app.use('/', require(`${__dirname}/back/SubPages_back/srv.js`));
