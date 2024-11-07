@@ -60,14 +60,51 @@ window.location.href = "https://techlog-production.up.railway.app/";
 
 
 
+
 router.post("/uregistred", (req, res) => {
   let { username, password } = req.body;
 
-  db.login(username, password).then((response) => {
-    if (response === 'correct') {
-      // Almacenar la información del usuario en la sesión
-      req.session.user = { username: username };
-      
+  db.login(username, password)
+    .then((response) => {
+      if (response === 'Has iniciado sesion') {
+        // Crea la cookie `isAuthenticated` en `true`
+        res.cookie("isAuthenticated", true, { httpOnly: true, secure: false });
+
+        // Redirige al contenido protegido después del inicio de sesión
+        res.send(`
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>InfoUser</title>
+          </head>
+          <script>
+            alert("${response}");
+            window.location.href = "/content";
+          </script>
+          <body></body>
+          </html>
+        `);
+      } else {
+        res.send(`
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>InfoUser</title>
+          </head>
+          <script>
+            alert("${response}");
+            window.location.href = "/login";
+          </script>
+          <body></body>
+          </html>
+        `);
+      }
+    })
+    .catch((e) => {
       res.send(`
         <!DOCTYPE html>
         <html lang="en">
@@ -77,47 +114,15 @@ router.post("/uregistred", (req, res) => {
           <title>InfoUser</title>
         </head>
         <script>
-          alert("${response}");
-          window.location.href = "/content";  // Redirige a la página de videos
+          alert("${e}");
+          window.location.href = "/login";
         </script>
         <body></body>
         </html>
       `);
-    } else {
-      res.send(`
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1">
-          <title>InfoUser</title>
-        </head>
-        <script>
-          alert("${response}");
-          window.location.href = "/login";  // Si falla el login, redirige al login
-        </script>
-        <body></body>
-        </html>
-      `);
-    }
-  }).catch(e => {
-    res.send(`
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>InfoUser</title>
-      </head>
-      <script>
-        alert("${e}");
-        window.location.href = "/login";  // Si hay error, redirige al login
-      </script>
-      <body></body>
-      </html>
-    `);
-  });
+    });
 });
+
 
 
 
