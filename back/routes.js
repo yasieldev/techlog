@@ -64,7 +64,7 @@ router.post("/uregistred", (req, res) => {
   let { username, password } = req.body;
 
   db.login(username, password).then((response) => {
-    if (response === 'Credenciales correctas') {
+    if (response === 'correct') {
       // Almacenar la información del usuario en la sesión
       req.session.user = { username: username };
       

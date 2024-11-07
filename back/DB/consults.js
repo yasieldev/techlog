@@ -74,7 +74,7 @@ function login(username, password) {
       } else if (res.length === 0) {
         reject("El usuario no existe, debe registrarse para poder iniciar sesión");
       } else {
-        comparePassword(username, password).then(res => resolve(res)).catch(e => reject(e));
+        comparePassword(username, password).then(res => resolve("correct")).catch(e => reject(e));
       }
     });
   });
