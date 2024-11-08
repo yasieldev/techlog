@@ -81,7 +81,7 @@ router.post("/uregistred", (req, res) => {
           </head>
           <script>
             alert("${response}");
-            window.location.href = "/content";
+            window.location.href = "/";
           </script>
           <body></body>
           </html>
